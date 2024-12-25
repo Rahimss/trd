@@ -1,3 +1,4 @@
+
 import numpy as np
 import streamlit as st
 
@@ -210,23 +211,22 @@ def create_matrix_input(rows, cols):
                 matrix.append(row_values)
     return matrix
 
-st.title("Solveur de problème de transport")
+st.title("Solveur de problème de transport by DEBIECHE ")
 
 method = st.selectbox("Méthode:", ["MCNO", "Moindre Cout", "Vogel"])
 
 col1, col2 = st.columns(2)
 with col1:
-    demand = st.text_input("Demande (séparée par des virgules):")
+    demand = st.text_input("Demande (séparée par des virgules):", value="00,00,00")
 with col2:
-    offer = st.text_input("Offre (séparée par des virgules):")
+    offer = st.text_input("Offre (séparée par des virgules):", value="00,00,00")
 
 if demand and offer:
     try:
         demand_list = list(map(float, demand.split(',')))
         offer_list = list(map(float, offer.split(',')))
         
-        matrix = create_matrix_input(len(offer_list), len(demand_list))
-        
+        matrix = create_matrix_input(len(offer_list), len(demand_list))    
         if st.button("Calculer"):
             if method == "MCNO":
                 quantity, total_cost = MCNO(demand_list, offer_list, matrix)
