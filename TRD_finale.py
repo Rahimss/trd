@@ -1,4 +1,3 @@
-
 import numpy as np
 import streamlit as st
 
@@ -161,6 +160,10 @@ def vogel(cout, offre, demande):
                     if cout[i_min][j] < minimum:
                         minimum = cout[i_min][j]
                         j_min = j
+                    elif cout[i_min][j] == minimum:
+                        # Consider as a single element and search for another minimum
+                        minimum = cout[i_min][j]
+                        j_min = j
             if j_min == -1:
                 break
         else:
@@ -170,6 +173,10 @@ def vogel(cout, offre, demande):
             for i in range(len(offre)):
                 if cout[i][j_min] != float('inf') and offre[i] > 0:
                     if cout[i][j_min] < minimum:
+                        minimum = cout[i][j_min]
+                        i_min = i
+                    elif cout[i][j_min] == minimum:
+                        # Consider as a single element and search for another minimum
                         minimum = cout[i][j_min]
                         i_min = i
             if i_min == -1:
