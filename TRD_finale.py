@@ -218,7 +218,7 @@ def create_matrix_input(rows, cols):
                 matrix.append(row_values)
     return matrix
 
-st.title("Solveur de problème de transport by DEBIECHE ")
+st.title("Heuristiques problème de transport by DEBIECHE ")
 
 method = st.selectbox("Méthode:", ["MCNO", "Moindre Cout", "Vogel"])
 
